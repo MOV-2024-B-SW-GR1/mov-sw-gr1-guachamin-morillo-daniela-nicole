@@ -1,0 +1,27 @@
+<!-- activity_actualizar_papa_noel.xml -->
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditText
+        android:id="@+id/edtNuevaEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nueva Edad"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edtNuevoPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nuevo Peso"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/btnActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        android:onClick="actualizarPapaNoel" />
+</LinearLayout>

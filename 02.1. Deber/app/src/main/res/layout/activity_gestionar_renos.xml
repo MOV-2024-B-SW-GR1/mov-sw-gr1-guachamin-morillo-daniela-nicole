@@ -1,0 +1,39 @@
+<!-- activity_gestionar_renos.xml -->
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditText
+        android:id="@+id/edtNombreReno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del reno" />
+
+    <EditText
+        android:id="@+id/edtEdadReno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Edad del reno"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edtPesoReno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Peso del reno"
+        android:inputType="numberDecimal" />
+
+    <CheckBox
+        android:id="@+id/chkLider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Es líder?" />
+
+    <Button
+        android:id="@+id/btnGuardarReno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:onClick="guardarReno" />
+</LinearLayout>
