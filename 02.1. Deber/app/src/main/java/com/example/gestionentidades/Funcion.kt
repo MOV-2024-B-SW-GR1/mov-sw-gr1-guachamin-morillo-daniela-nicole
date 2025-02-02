@@ -1,8 +1,8 @@
-package com.example.gestionentidades
+/*package com.example.gestionentidades
 
 import java.time.LocalDate
 
-object Funcion {
+class Funcion {
     private var papaNoel: PapaNoel? = null // Solo puede haber un Papá Noel
 
     // Crear Papá Noel si no existe
@@ -109,4 +109,4 @@ object Funcion {
     fun hayLider(): Boolean {
         return papaNoel?.renos?.any { it.esLider } == true
     }
-}
+}*/

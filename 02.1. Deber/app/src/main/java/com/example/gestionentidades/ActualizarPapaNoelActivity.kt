@@ -1,3 +1,4 @@
+/*
 package com.example.gestionentidades
 
 import android.content.Intent
@@ -27,3 +28,46 @@ class ActualizarPapaNoelActivity : AppCompatActivity() {
         startActivity(intent)
     }
 }
+*/
+
+package com.example.gestionentidades
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+
+class ActualizarPapaNoelActivity : AppCompatActivity() {
+
+    private lateinit var papaNoelDAO: PapaNoelDAO
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_actualizar_papa_noel)
+
+        // Inicializar el DAO
+        papaNoelDAO = PapaNoelDAO(this)
+
+        // Obtener los datos actuales de Papá Noel
+        val papaNoel = papaNoelDAO.obtenerPapaNoel()
+        papaNoel?.let {
+            findViewById<EditText>(R.id.edtNuevaEdad).setText(it.edad.toString())
+            findViewById<EditText>(R.id.edtNuevoPeso).setText(it.peso.toString())
+        }
+    }
+
+    fun actualizarPapaNoel(view: View) {
+        val nuevaEdad = findViewById<EditText>(R.id.edtNuevaEdad).text.toString().toIntOrNull()
+        val nuevoPeso = findViewById<EditText>(R.id.edtNuevoPeso).text.toString().toDoubleOrNull()
+
+        val papaNoel = papaNoelDAO.obtenerPapaNoel()
+        if (papaNoel != null && nuevaEdad != null && nuevoPeso != null) {
+            papaNoelDAO.actualizarPapaNoel(papaNoel.id, nuevaEdad, nuevoPeso)
+        }
+
+        val intent = Intent(this, ListaPapaNoelActivity::class.java)
+        startActivity(intent)
+    }
+}
+
