@@ -1,39 +1,76 @@
-<!-- activity_gestionar_renos.xml -->
-<LinearLayout android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/fondopararenos">
 
+    <!-- EditText para el Nombre del reno -->
     <EditText
         android:id="@+id/edtNombreReno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre del reno" />
+        android:fontFamily="@font/subtitulos"
+        android:hint="Nombre del reno"
+        app:layout_constraintBottom_toTopOf="@+id/edtEdadReno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.036" />
 
+    <!-- EditText para la Edad del reno -->
     <EditText
         android:id="@+id/edtEdadReno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/subtitulos"
         android:hint="Edad del reno"
-        android:inputType="number" />
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/edtPesoReno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNombreReno" />
 
+    <!-- EditText para el Peso del reno -->
     <EditText
         android:id="@+id/edtPesoReno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/subtitulos"
         android:hint="Peso del reno"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/chkLider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEdadReno" />
 
+    <!-- CheckBox para el Lider -->
     <CheckBox
         android:id="@+id/chkLider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿Es líder?" />
+        android:text="¿Es líder?"
+        app:layout_constraintBottom_toTopOf="@+id/btnGuardarReno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPesoReno"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.297" />
 
+    <!-- Botón para guardar el reno -->
     <Button
         android:id="@+id/btnGuardarReno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#166AC8"
+        android:fontFamily="@font/subtitulos"
+        android:onClick="guardarReno"
         android:text="Guardar"
-        android:onClick="guardarReno" />
-</LinearLayout>
+        android:textColor="@color/color_dorado_navidad"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

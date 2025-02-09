@@ -1,9 +1,10 @@
 <LinearLayout android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/reno2">
 
-    <EditText
+<EditText
         android:id="@+id/edtNuevaEdadReno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,6 +28,10 @@
         android:id="@+id/btnActualizarReno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/design_default_color_background"
+        android:fontFamily="@font/subtitulos"
+        android:onClick="actualizarReno"
         android:text="Actualizar"
-        android:onClick="actualizarReno" />
+        android:textColor="@color/color_rojo_navidad"
+        android:textSize="20sp" />
 </LinearLayout>

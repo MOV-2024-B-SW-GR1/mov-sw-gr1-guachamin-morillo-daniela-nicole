@@ -49,12 +49,17 @@ class ActualizarPapaNoelActivity : AppCompatActivity() {
         // Inicializar el DAO
         papaNoelDAO = PapaNoelDAO(this)
 
+        // Obtener las referencias a los EditText
+        val edtNuevaEdad = findViewById<EditText>(R.id.edtNuevaEdad)
+        val edtNuevoPeso = findViewById<EditText>(R.id.edtNuevoPeso)
+
         // Obtener los datos actuales de Papá Noel
         val papaNoel = papaNoelDAO.obtenerPapaNoel()
         papaNoel?.let {
-            findViewById<EditText>(R.id.edtNuevaEdad).setText(it.edad.toString())
-            findViewById<EditText>(R.id.edtNuevoPeso).setText(it.peso.toString())
+            findViewById<EditText>(R.id.edtNuevaEdad).setText("")
+            findViewById<EditText>(R.id.edtNuevoPeso).setText("")
         }
+
     }
 
     fun actualizarPapaNoel(view: View) {
@@ -62,10 +67,9 @@ class ActualizarPapaNoelActivity : AppCompatActivity() {
         val nuevoPeso = findViewById<EditText>(R.id.edtNuevoPeso).text.toString().toDoubleOrNull()
 
         val papaNoel = papaNoelDAO.obtenerPapaNoel()
-        if (papaNoel != null && nuevaEdad != null && nuevoPeso != null) {
+        if (papaNoel != null) {
             papaNoelDAO.actualizarPapaNoel(papaNoel.id, nuevaEdad, nuevoPeso)
         }
-
         val intent = Intent(this, ListaPapaNoelActivity::class.java)
         startActivity(intent)
     }

@@ -6,9 +6,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GestionarPapaNoelActivity">
+    tools:context=".GestionarPapaNoelActivity"
+    android:background="@drawable/invierno1">
 
-    <EditText
+
+<EditText
         android:id="@+id/edtNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,8 +52,17 @@
         android:id="@+id/btnGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"
+        android:layout_marginTop="208dp"
+        android:backgroundTint="#1460B6"
+        android:fontFamily="@font/subtitulos"
         android:onClick="guardarPapaNoel"
+        android:text="Guardar"
+        android:textColor="@color/design_default_color_background"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtPais"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

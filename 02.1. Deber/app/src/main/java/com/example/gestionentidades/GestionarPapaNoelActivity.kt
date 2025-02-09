@@ -115,8 +115,10 @@ class GestionarPapaNoelActivity : AppCompatActivity() {
 
         // Verificar si los campos son válidos antes de guardar
         if (nombre.isNotBlank() && edad > 0 && peso > 0 && pais.isNotBlank()) {
+            val latitud = 66.5406
+            val longitud = 25.7111
             // Crear o actualizar Papá Noel utilizando el DAO
-            papaNoelDAO.crearPapaNoel(nombre, edad, peso, pais)
+            papaNoelDAO.crearPapaNoel(nombre, edad, peso, pais, latitud, longitud)
             Toast.makeText(this, "Papá Noel guardado", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, ListaPapaNoelActivity::class.java))
         } else {

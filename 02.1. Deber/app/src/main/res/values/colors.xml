@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="color_rojo_navidad">#FF0000</color>
+    <color name="color_verde_navidad">#008000</color>
+    <color name="color_dorado_navidad">#FFD700</color>
+    <color name="color_vino_navidad">#8A3D3D</color>
 </resources>

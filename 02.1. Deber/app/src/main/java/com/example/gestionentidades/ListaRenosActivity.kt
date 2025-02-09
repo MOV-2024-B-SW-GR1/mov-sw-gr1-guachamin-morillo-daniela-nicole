@@ -2,15 +2,19 @@ package com.example.gestionentidades
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 
 /*class ListaRenosActivity : AppCompatActivity() {
 
@@ -118,40 +122,6 @@ class ListaRenosActivity : AppCompatActivity() {
         cargarListaRenos()
     }
 
-    /*    private fun cargarListaRenos() {
-        val listView = findViewById<ListView>(R.id.listViewRenos)
-
-        val papaNoel = papaNoelDAO.obtenerPapaNoel()
-        renos = renoDAO.obtenerRenos(papaNoelId) // Ahora sí obtenemos los renos correctamente
-
-        Log.d("DEBUG", "Total de renos cargados en la lista: ${renos.size}")
-
-        val items = mutableListOf<String>()
-        if (papaNoel != null) {
-            items.add("Papá Noel: ${papaNoel.nombre}")
-        }
-        if (renos.isEmpty()) {
-            items.add("No hay renos registrados.")
-        } else {
-            for (reno in renos) {
-                Log.d("DEBUG", "Agregando reno a la lista: ${reno.nombre}")
-                items.add("Reno: ${reno.nombre}")
-            }
-        }
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, items)
-        listView.adapter = adapter
-
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val nombreSeleccionado = items[position]
-            if (nombreSeleccionado.startsWith("Reno:")) {
-                val renoSeleccionado = renos.find { "Reno: ${it.nombre}" == nombreSeleccionado }
-                renoSeleccionado?.let {
-                    mostrarOpcionesReno(it)
-                }
-            }
-        }
-    }*/
 
     private fun cargarListaRenos() {
         val listView = findViewById<ListView>(R.id.listViewRenos)
@@ -178,7 +148,27 @@ class ListaRenosActivity : AppCompatActivity() {
             }
         }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, items)
+        val adapter = object : ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                // Obtener la vista del ítem
+                val view = super.getView(position, convertView, parent)
+
+                // Obtener el TextView de la vista
+                val textView = view.findViewById<TextView>(android.R.id.text1)
+
+                //Cargar fuente
+                val typeface = ResourcesCompat.getFont(context, R.font.subtitulos)
+                textView.typeface = typeface
+
+                // Cambiar el color del texto
+                textView.setTextColor(Color.BLACK)
+
+                // Cambiar el tamaño de la letra (si es necesario)
+                textView.textSize = 16f // Tamaño en sp
+
+                return view
+            }
+        }
         listView.adapter = adapter
 
         listView.setOnItemClickListener { _, _, position, _ ->

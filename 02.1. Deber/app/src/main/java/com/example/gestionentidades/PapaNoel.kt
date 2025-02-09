@@ -10,4 +10,6 @@ data class PapaNoel(
     val paisResidencia: String,
     val fechaInicio: LocalDate,
     //val renos: ArrayList<Reno> = arrayListOf()
+    var latitud: Double, //agregado para mapa
+    var longitud: Double //agregado para mapa
 )

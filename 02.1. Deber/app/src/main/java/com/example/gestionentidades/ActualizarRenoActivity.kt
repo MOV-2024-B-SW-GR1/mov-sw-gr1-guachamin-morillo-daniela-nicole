@@ -87,10 +87,6 @@ class ActualizarRenoActivity : AppCompatActivity() {
         // Si encontramos el reno, cargar los datos en los campos
         if (reno != null) {
             Log.d("DEBUG","RENO ENCONTRADO; ${reno.nombre}")
-            //findViewById<EditText>(R.id.edtNombreReno).setText(reno.nombre)
-            //findViewById<EditText>(R.id.edtEdadReno).setText(reno.edad.toString())
-            //findViewById<EditText>(R.id.edtPesoReno).setText(reno.peso.toString())
-            //findViewById<CheckBox>(R.id.chkNuevoLider).isChecked = reno.esLider
         } else {
             Log.d("DEBUG","RENO NO ENCONTRADO")
             Toast.makeText(this, "Error: Reno no encontrado", Toast.LENGTH_SHORT).show()
@@ -109,7 +105,6 @@ class ActualizarRenoActivity : AppCompatActivity() {
         }
 
         if (renoId != null) {
-
             renoDAO.actualizarReno(renoId!!, edad, peso, esLider)
             Toast.makeText(this, "Reno actualizado", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ListaRenosActivity::class.java)

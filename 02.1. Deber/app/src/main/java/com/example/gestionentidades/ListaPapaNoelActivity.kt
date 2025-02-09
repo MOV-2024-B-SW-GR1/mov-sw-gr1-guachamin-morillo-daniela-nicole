@@ -1,13 +1,17 @@
 package com.example.gestionentidades
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.res.ResourcesCompat
 
 /*class ListaPapaNoelActivity : AppCompatActivity() {
 
@@ -106,10 +110,32 @@ class ListaPapaNoelActivity : AppCompatActivity() {
                 "Edad: ${papaNoel.edad}",
                 "Peso: ${papaNoel.peso}",
                 "País: ${papaNoel.paisResidencia}",
-                "Fecha de Inicio: ${papaNoel.fechaInicio}"
+                "Fecha de Inicio: ${papaNoel.fechaInicio}",
+                "Latitud: ${papaNoel.latitud ?: "No registrada"}",
+                "Longitud: ${papaNoel.longitud ?: "No registrada"}"
             )
 
-            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, datos)
+            val adapter = object : ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos){
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    // Obtener la vista del ítem
+                    val view = super.getView(position, convertView, parent)
+
+                    // Obtener el TextView de la vista
+                    val textView = view.findViewById<TextView>(android.R.id.text1)
+
+                    //Cargar fuente
+                    val typeface = ResourcesCompat.getFont(context, R.font.subtitulos)
+                    textView.typeface = typeface
+
+                    // Cambiar el color del texto
+                    textView.setTextColor(Color.WHITE)
+
+                    // Cambiar el tamaño de la letra (si es necesario)
+                    textView.textSize = 18f // Tamaño en sp
+
+                    return view
+                }
+            }
             listView.adapter = adapter
 
             // Agregar el evento para mostrar el menú emergente
@@ -137,6 +163,21 @@ class ListaPapaNoelActivity : AppCompatActivity() {
                 Toast.makeText(this, "No hay un Papá Noel registrado", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val btnMapa: Button = findViewById(R.id.btnMapa)
+        btnMapa.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            val papaNoel = papaNoelDAO.obtenerPapaNoel()
+            if (papaNoel != null) {
+                intent.putExtra("LATITUD", papaNoel.latitud)
+                intent.putExtra("LONGITUD", papaNoel.longitud)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "No hay un Papá Noel registrado", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
     }
 
     private fun mostrarMenu(view: View, papaNoelId: Int) {

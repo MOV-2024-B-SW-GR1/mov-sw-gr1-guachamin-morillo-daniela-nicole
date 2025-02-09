@@ -9,7 +9,7 @@ class PapaNoelDAO(context: Context) {
     private val dbHelper = DatabaseHelper(context)
 
     // Crear Papá Noel
-    fun crearPapaNoel(nombre: String, edad: Int, peso: Double, pais: String): Long {
+    fun crearPapaNoel(nombre: String, edad: Int, peso: Double, pais: String, latitud: Double, longitud: Double): Long {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("nombre", nombre)
@@ -17,6 +17,8 @@ class PapaNoelDAO(context: Context) {
             put("peso", peso)
             put("pais", pais)
             put("fechaInicio", LocalDate.now().toString())
+            put("latitud", latitud)
+            put("longitud", longitud)
         }
         return db.insert("papa_noel", null, values).also { db.close() }
     }
@@ -24,7 +26,9 @@ class PapaNoelDAO(context: Context) {
     // Obtener Papá Noel
     fun obtenerPapaNoel(): PapaNoel? {
         val db = dbHelper.readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM papa_noel LIMIT 1", null)
+        //val cursor = db.rawQuery("SELECT * FROM papa_noel LIMIT 1", null)
+        val cursor = db.rawQuery("SELECT id, nombre, edad, peso, pais, fechaInicio, latitud, longitud FROM papa_noel LIMIT 1", null)
+
 
         return if (cursor.moveToFirst()) {
             val papaNoel = PapaNoel(
@@ -33,7 +37,9 @@ class PapaNoelDAO(context: Context) {
                 cursor.getInt(2),
                 cursor.getDouble(3),
                 cursor.getString(4),
-                LocalDate.parse(cursor.getString(5))
+                LocalDate.parse(cursor.getString(5)),
+                cursor.getDouble(6), //agregado para mapa
+                cursor.getDouble(7) //agregado para mapa
             )
             cursor.close()
             db.close()
@@ -43,6 +49,17 @@ class PapaNoelDAO(context: Context) {
             db.close()
             null
         }
+    }
+
+    // Actualizar coordenadas de Papá Noel
+    fun actualizarCoordenadas(id: Int, latitud: Double, longitud: Double) {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put("latitud", latitud)
+            put("longitud", longitud)
+        }
+        db.update("papa_noel", values, "id = ?", arrayOf(id.toString()))
+        db.close()
     }
 
     // Actualizar Papá Noel

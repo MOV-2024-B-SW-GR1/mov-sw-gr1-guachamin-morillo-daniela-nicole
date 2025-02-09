@@ -50,7 +50,12 @@ class GestionarRenosActivity : AppCompatActivity() {
         val peso = findViewById<EditText>(R.id.edtPesoReno).text.toString().toDouble()
         val esLider = findViewById<CheckBox>(R.id.chkLider).isChecked
 
-        val papaNoelId = 1 // Esto debe ser dinámico dependiendo del Papá Noel
+        val papaNoelId = intent.getIntExtra("papaNoelId", -1)
+        if (papaNoelId == -1) {
+            Toast.makeText(this, "Error al obtener el ID de Papá Noel", Toast.LENGTH_SHORT).show()
+            finish()
+        }
+
 
         val resultado = renoDAO.agregarReno(papaNoelId, nombre, edad, peso, esLider)
         if (resultado == -1L) {

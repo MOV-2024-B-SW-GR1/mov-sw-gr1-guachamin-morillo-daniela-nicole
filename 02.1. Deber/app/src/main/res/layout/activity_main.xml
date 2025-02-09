@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/fondo1">
 
     <TextView
         android:id="@+id/tvBienvenida"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bienvenido a la gestión de Papá Noel"
-        android:textSize="18sp"
+        android:layout_width="223dp"
+        android:layout_height="172dp"
+        android:layout_marginBottom="84dp"
+        android:fontFamily="@font/titulos"
         android:gravity="center"
-        android:layout_marginBottom="16dp"/>
+        android:text="CONOCE A PAPÁ NOEL"
+        android:textColor="@color/color_dorado_navidad"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnGestionarPapaNoel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
 
     <Button
         android:id="@+id/btnGestionarPapaNoel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="261dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="176dp"
+        android:backgroundTint="#8A3D3D"
+        android:fontFamily="@font/subtitulos"
+        android:onClick="gestionarPapaNoel"
         android:text="Gestionar Papá Noel"
-        android:onClick="gestionarPapaNoel"/>
-</LinearLayout>
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
