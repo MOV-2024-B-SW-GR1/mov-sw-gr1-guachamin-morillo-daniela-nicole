@@ -13,16 +13,29 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private var latitud: Double = 66.5406 // Polo Norte
-    private var longitud: Double = 25.7111 // Polo Norte
+    private lateinit var papaNoelDAO: PapaNoelDAO
+    private var latitud: Double = 90.0 // Polo Norte
+    private var longitud: Double = 0.0 // Polo Norte
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
-        // Obtener las coordenadas (Polo Norte)
-        val latitud = intent.getDoubleExtra("LATITUD", 66.5406)
-        val longitud = intent.getDoubleExtra("LONGITUD", 25.7111)
+        // Inicializar el DAO
+        papaNoelDAO = PapaNoelDAO(this)
+
+        /*Obtener las coordenadas (Polo Norte)
+        //val latitud = intent.getDoubleExtra("LATITUD", 66.5406)
+        //val longitud = intent.getDoubleExtra("LONGITUD", 25.7111)*/
+
+        // Obtener las coordenadas de Papá Noel desde el DAO
+        val papaNoel = papaNoelDAO.obtenerPapaNoel()
+        // Si se encontró un Papa Noel con coordenadas, actualizar las variables
+        papaNoel?.let {
+            latitud = it.latitud
+            longitud = it.longitud
+        }
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
