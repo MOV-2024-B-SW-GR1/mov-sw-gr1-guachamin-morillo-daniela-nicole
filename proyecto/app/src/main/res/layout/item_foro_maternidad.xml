@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuario"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensaje del foro" />
+
+    <Button
+        android:id="@+id/btnResponder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Responder" />
+
+    <ListView
+        android:id="@+id/listViewRespuestas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+</LinearLayout>

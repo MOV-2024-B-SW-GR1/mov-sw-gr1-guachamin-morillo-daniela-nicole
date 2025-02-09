@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "995161031256",
+    "project_id": "entidades2b",
+    "storage_bucket": "entidades2b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995161031256:android:9e9d111c8ddf77bb79c02d",
+        "android_client_info": {
+          "package_name": "com.example.proyecto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMVMYgWE_qZzgs7Bhw2qYmezl64a2N2OE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
